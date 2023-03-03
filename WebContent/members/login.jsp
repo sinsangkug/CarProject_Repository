@@ -40,8 +40,10 @@
 	        
       </form>
       <div>
-		    <a href="javascript:kakaoLogin()"><img src="<%=request.getContextPath()%>/img/kakao_login.png"></a>
-<!-- 		    <button>네이버 로그인</button> -->
+       <a href="javascript:kakaoLogin();">
+       		<img src="<%=request.getContextPath()%>/img/kakao_login.png" alt="카카오계정 로그인"/>
+       </a>
+		   
 		</div>
     </div> <!-- /container -->
 </center>
@@ -51,9 +53,35 @@
     <script src="/CarProject/js/ie10-viewport-bug-workaround.js"></script>	
     
     
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+//         window.Kakao.init('9fda7e229eb85ba2a11c20d82164780e');
+
+//         function kakaoLogin() {
+//             window.Kakao.Auth.login({
+//                 scope: 'profile, account_email, gender, age_range, birthday', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.
+//                 success: function(response) {
+//                     console.log(response) // 로그인 성공하면 받아오는 데이터
+//                     window.Kakao.API.request({ // 사용자 정보 가져오기 
+//                         url: '/v2/user/me',
+//                         success: (res) => {
+//                             const kakao_account = res.kakao_account;
+//                             console.log(kakao_account)
+//                         }
+//                     });
+//                     // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
+//                 },
+//                 fail: function(error) {
+//                     console.log(error);
+//                 }
+//             });
+//         }
+    </script>
+    
+    
     <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script type="text/javascript">
-	    Kakao.init('1de5dcc9cb8ef52a2b543b50fde654cf');
+	    Kakao.init('9fda7e229eb85ba2a11c20d82164780e');
 	    function kakaoLogin() {
 	        Kakao.Auth.login({
 	            success: function (response) {
@@ -61,10 +89,15 @@
 	                Kakao.API.request({
 	                    url: '/v2/user/me',
 	                    success: function (response) {
-	                    	alert(JSON.stringify(response))
+	                    	
+	                    	 console.log( typeof response) // 로그인 성공하면 받아오는 데이터
+	                    	 
+// 	                    	 {"id":2690453188,"connected_at":"2023-03-03T07:26:56Z","kakao_account":{"has_email":true,"email_needs_agreement":true}}
+	                    	
+	                    	 alert(JSON.stringify(response))
 	                        var name = response.id;
 	                        console.log(name);
-	                    	location.href="<%=request.getContextPath()%>/member/kakaoLoginPro.me?name="+name+"";
+	                    	location.href='<%=request.getContextPath()%>/member/kakaoLoginPro.me';
 	                    },
 	                    fail: function (error) {
 	                        alert(JSON.stringify(error))
