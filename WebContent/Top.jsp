@@ -71,36 +71,40 @@
 					if(id == null){
 				%>		
 						<div id="login" align="center">
-							<a href="<%=contextPath%>/member/login.me">login</a> | 
-							<a href="<%=contextPath%>/member/join.me?center=members/join.jsp">join</a>
+						
+				          <button type="button" class="btn btn-warning" onclick="location.href='<%=contextPath%>/member/login.me'">로그인</button>
+				          <button type="button" class="btn btn-warning" onclick="location.href='<%=contextPath%>/member/join.me?center=members/join.jsp'">회원가입</button> 
+						  <button id="joinBtn" class="btn btn-info" onclick="location.href='<%=contextPath%>/Guestbook/GuestbookListAction.gb'">방명록</button>
+							<nav class="navbar navbar-light">
+									<div class="container-fluid">
+									<form class="d-flex" action="<%=contextPath%>/Car/NaverSearchAPI.do">
+										<input class="form-control me-2" type="search"
+											id="keyword" name="keyword" placeholder="Search" aria-label="Search">
+										<input type="hidden" id="startNum" name="startNum" value="1">	
+										<button id="searchBtn" class="btn btn-outline-success" type="submit">search</button>
+									</form>
+								</div>
+							</nav>
 						</div>
-						<nav class="navbar navbar-light bg-light">
-								<div class="container-fluid">
-								<form class="d-flex" action="<%=contextPath%>/Car/NaverSearchAPI.do">
-									<input class="form-control me-2" type="search"
-										id="keyword" name="keyword" placeholder="Search" aria-label="Search">
-									<input type="hidden" id="startNum" name="startNum" value="1">	
-									<button id="searchBtn" class="btn btn-outline-success" type="submit">search</button>
-								</form>
-							</div>
-						</nav>
 				<%
 					}else{
 				%>		
 						<div id="login">
-							<%=id%>님 로그인 되셨습니다.
-							<a href="<%=contextPath%>/member/logout.me">logout</a>
+							<%=id%>&nbsp;&nbsp;
+							<button type="button" class="btn btn-warning" onclick="location.href='<%=contextPath%>/member/logout.me'">정보수정</button>&nbsp;&nbsp;
+							<button type="button" class="btn btn-warning" onclick="location.href='<%=contextPath%>/member/logout.me'">로그아웃</button> 
+							<button id="joinBtn" class="btn btn-info" onclick="location.href='<%=contextPath%>/Guestbook/GuestbookListAction.gb'">방명록</button>
+							<nav class="navbar navbar-light">
+									<div class="container-fluid">
+									<form class="d-flex" action="<%=contextPath%>/Car/NaverSearchAPI.do">
+										<input class="form-control me-2" type="search"
+											id="keyword" name="keyword" placeholder="Search" aria-label="Search">
+										<input type="hidden" id="startNum" name="startNum" value="1">	
+										<button id="searchBtn" class="btn btn-outline-success" type="submit">search</button>
+									</form>
+								</div>
+							</nav>
 						</div>
-						<nav class="navbar navbar-light bg-light">
-								<div class="container-fluid">
-								<form class="d-flex" action="<%=contextPath%>/Car/NaverSearchAPI.do">
-									<input class="form-control me-2" type="search"
-										id="keyword" name="keyword" placeholder="Search" aria-label="Search">
-									<input type="hidden" id="startNum" name="startNum" value="1">	
-									<button id="searchBtn" class="btn btn-outline-success" type="submit">search</button>
-								</form>
-							</div>
-						</nav>
 				<%				
 					}
 				%>

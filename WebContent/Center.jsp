@@ -19,6 +19,7 @@
 	request.setCharacterEncoding("utf-8");
 	String contextPath = request.getContextPath();
 %>  
+
 		<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
@@ -39,6 +40,8 @@
 		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		    <span class="sr-only">Next</span>
 		  </button>
+		  
+		 
 		</div>
  
  <!-- Optional JavaScript; choose one of the two! -->

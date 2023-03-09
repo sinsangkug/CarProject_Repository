@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 <link rel="icon" href="../../favicon.ico">
   <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
      <!-- Custom styles for this template -->
-    <link href="../signin.css" rel="stylesheet">
+    <link href="signin.css" rel="stylesheet">
     
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../js/ie-emulation-modes-warning.js"></script>
+    <script src="js/ie-emulation-modes-warning.js"></script>
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
