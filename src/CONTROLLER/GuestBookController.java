@@ -166,10 +166,48 @@ public class GuestBookController extends HttpServlet{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
+			//  /GuestbookUpdateFormAction.gb  
+			//  방명록글 수정 하는 VIEW디자인화면 요청을 받았을때...	
+			case "/GuestbookUpdateFormAction.gb":	
+				
+				
+				int guestbook_no_ = Integer.parseInt(request.getParameter("num"));
+				String pageNum_ = request.getParameter("page");
+				
+				
+				GuestbookBean guestbook_ = gestbookservice.getGuestbookService(guestbook_no_);
+				
+				request.setAttribute("guestbook", guestbook_);
+				request.setAttribute("pageNum", pageNum_);
+				
+				
+				//수정글을 입력할 수 있는 팝업창 
+				nextPage = "/guestbook/GuestbookUpdateForm.jsp";
+				
+				break;				
+			
+				
+			//답변글 내용 수정창에서  수정전  비밀번호를 입력하고 확인을 누르면
+			//답변글의 글번호, 입력한 비밀번호가 전달된 답변글을 수정할 화면을 다시 요청한다.
+				//수정을 위해 입력한 비밀번호가 DB에 저장된 답변글의 비밀번호와 일치하면?
+				//비밀번호 입력 디자인은 웹브라우저 화면에 보이지 않게 하고 
+				//대신 ~~~  수정시 입력하는 화면을 보이게 활성화 하게 된다.
+			case "/GuestbookPwCheckAction.gb":
+				
+				try {		
+					gestbookservice.GuestbookPwCheckService(request,response);
+				
+					break;
+			
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				 
 				
 				
 			default:
-				break;
+				break;	
 		}
 		
 		

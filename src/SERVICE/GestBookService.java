@@ -1,5 +1,6 @@
 package SERVICE;
 
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -166,6 +167,34 @@ public class GestBookService {
 		GuestbookBean guestbook = gestbookdao.getGuestbook(guestbook_no);
 
 		return guestbook;
+	}
+
+	//답변글 수정을 위해 입력한 비밀번호와 실제 답변글의 비밀번호가 일치한지 비교하는 메소드 
+	public void GuestbookPwCheckService(HttpServletRequest request,
+										HttpServletResponse response) 
+												throws Exception {
+		
+		String inputPW = request.getParameter("pw");
+		String g_no = request.getParameter("num");
+		int guestbook_no = Integer.parseInt(g_no);
+		
+		//방명록 답변글 수정을 위해 글의 비밀번호와  입력한 비밀번호 비교 하여 맞으면 
+		//조회한 답변글의 비밀번호를 얻어 리턴
+		String dbPW = gestbookdao.getPassword(guestbook_no);
+		
+		response.setContentType("text/html;charset=euc-kr");
+		PrintWriter out = response.getWriter();
+		
+		//입력한 비밀번호와 조회한 답변글의 비밀번호가 다르면?
+		if(!dbPW.equals(inputPW)) {	
+			
+			out.println("0"); //AJAX
+		}
+		else {//다르면?	
+			out.println("1"); //AJAXs
+		}
+		
+		out.close();
 	}
 	
 }

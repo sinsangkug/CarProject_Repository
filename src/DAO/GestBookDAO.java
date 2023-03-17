@@ -16,6 +16,7 @@ import VO.GuestbookBean;
 
 
 
+
 public class GestBookDAO {
 
 	Connection con;
@@ -254,6 +255,34 @@ public class GestBookDAO {
 				closeResource();	
 			}
 			return guestbook; 
+		}
+
+
+		//방명록 답변글 수정을 위해 글의 비밀번호와  입력한 비밀번호 비교 하여 맞으면 조회한 답변글의 비밀번호를 얻어 리턴
+		public String getPassword(int guestbook_no) {
+			String password = null;
+			
+			try {
+				con = ds.getConnection();
+				
+				StringBuffer sql = new StringBuffer();
+				sql.append("SELECT guestbook_password FROM GUESTBOOK where guestbook_no = ?");
+				
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, guestbook_no);
+				
+				rs = pstmt.executeQuery();
+				if(rs.next()) password = rs.getString("guestbook_password");
+				
+			} catch (Exception e) {
+			
+				e.printStackTrace();
+				
+			} finally {
+				closeResource();
+			}
+
+			return password;
 		}
 		
 	

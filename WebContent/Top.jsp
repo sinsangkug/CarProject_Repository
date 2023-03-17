@@ -14,6 +14,11 @@
 
 
 	<style>
+/* 		전체 폰트 크기 반응형으로  설정1  */
+		html {
+    			font-size: 62.5%
+		}
+		
 		
 		#login{
 			float: right;
@@ -118,31 +123,32 @@
 	<%-- 메뉴 만들기 --%>
 	<table width="100%" background="<%=contextPath %>/img/aa.jpg" height="5">
 		<tr>
-			<td align="center" bgcolor="red">
+			<td align="center" bgcolor="red" width="20%">
 				<a href="<%=contextPath %>/Car/bb?center=CarReservation.jsp">
-					<img src="<%=contextPath %>/img/bb.jpg" />
+					 <div style="font-size: 2.5rem; color: white;">예약하기</div>
 				</a> <%--예약하기 --%>
 			</td>
-			<td align="center" bgcolor="red">
+			<td align="center" bgcolor="red" width="20%">
 				<a href="<%=contextPath %>/Car/cc?center=CarReserveConfirm.jsp">
-					<img src="<%=contextPath %>/img/cc.jpg" />
+					<div style="font-size: 2.5rem; color: white;">예약확인</div>
 				</a> <%--예약확인 --%>
 			</td>
-			<td align="center" bgcolor="red">
+			<td align="center" bgcolor="red" width="20%">
 				<a href="<%=contextPath %>/board1/list.bo">
-					<img src="<%=contextPath %>/img/dd.jpg" />
+					<div style="font-size: 2.5rem; color: white;">자유게시판</div>
 				</a> <%--자유게시판 --%>
 			</td>
-			<td align="center" bgcolor="red">
-				<a href="<%=contextPath %>/Car/even">
-					<img src="<%=contextPath %>/img/even.jpg" />
+			<td align="center" bgcolor="red" width="20%">
+				<a href="<%=contextPath %>/EventBoard/list.bo">
+					<div style="font-size: 2.5rem; color: white;">이벤트정보</div>
 				</a> <%--이벤트정보 --%>
 			</td>
-			<td align="center" bgcolor="red">
+			<td align="center" bgcolor="red" width="20%">
 				<a href="<%=contextPath %>/FileBoard/list.bo?nowBlock=0&nowPage=0">
-					<img src="<%=contextPath %>/img/ee.jpg" />
+					<div style="font-size: 2.5rem; color: white;">공지사항</div>
 				</a> <%--공지사항게시판 --%>
 			</td>
+			
 		</tr>
 	</table>
 	<!-- Optional JavaScript; choose one of the two! -->

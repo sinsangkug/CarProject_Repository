@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  
 <html>
 <head>
 	<title>방명록 수정</title>
@@ -62,23 +65,33 @@
 				
 				httpRequest = getXMLHttpRequest();
 				httpRequest.onreadystatechange = checkFunc;
-				httpRequest.open("POST", "GuestbookPwCheckAction.ge", true);	
+				httpRequest.open("POST", "${contextPath}/Guestbook/GuestbookPwCheckAction.gb", true);	
 				httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
 				httpRequest.send(param);
 			}
 		}
 		
+		//checkValue() 함수 안에서 javascript AJAX요청후 응답 받을때 호출되는 메소드 
 		function checkFunc(){
+			
 			if(httpRequest.readyState == 4){
-				// 결과값을 가져온다.
+				// GuestBookController의 GestBookService클래스 내부의 
+				// GuestbookPwCheckService메소드 내부에서 
+				// 방명록 답변글 수정을 위해 글의 비밀번호와  입력한 비밀번호 비교 하여 맞으면 
+				// 결과값 1을 가져오고 다르면 0을 가져 온다.
 				var resultText = httpRequest.responseText;
-				if(resultText == 0){
+				
+				if(resultText == 0){//다르면?
 					alert("비밀번호가 틀립니다.");
 				} 
-				else if(resultText == 1){ 
-					// 비밀번호 일치시 수정 화면을 보이게 한다.
+				else if(resultText == 1){ //비밀번호 일치시 수정 화면을 css로 보이게 한다.	
+					
+					//비밀번호 입력화면을CSS로 안보이게 하기위해 선택해서 가져온다.
 					var chkForm = document.getElementById("pwCheckForm"); 
+					
+					//수정을 위해 입력하는 화면을 보이게 하기 위해 선택해서 가져온다. 
 					var uForm = document.getElementById("writeUpdateForm"); 
+
 					chkForm.style.display = 'none'; // 비밀번호 입력화면 - 안보이게
 					uForm.style.display = 'block';	// 수정화면 - 보이게
 				}
